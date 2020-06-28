@@ -45,31 +45,6 @@ do {\
     p[i3+2] = (float)(vz);\
 } while(0)
 
-/*
-template <typename T>
-GLM_FUNC_QUALIFIER glm::tmat4x4<T, glm::defaultp> frustumRH
- (T left, T right, T bottom, T top, T nearVal, T farVal)
-{
-    glm::tmat4x4<T, glm::defaultp> Result(0);
-    Result[0][0] = (static_cast<T>(2) * nearVal) / (right - left);
-    Result[1][1] = (static_cast<T>(2) * nearVal) / (top - bottom);
-    Result[2][0] = (right + left) / (right - left);
-    Result[2][1] = (top + bottom) / (top - bottom);
-    Result[2][3] = static_cast<T>(-1);
-    
-#if GLM_DEPTH_CLIP_SPACE == GLM_DEPTH_ZERO_TO_ONE
-    Result[2][2] = farVal / (nearVal - farVal);
-    Result[3][2] = -(farVal * nearVal) / (farVal - nearVal);
-    
-#else
-    Result[2][2] = -(farVal + nearVal) / (farVal - nearVal);
-    Result[3][2] = -(static_cast<T>(2) * farVal * nearVal) / (farVal - nearVal);
-    
-#endif
-    
-    return Result;
-}
-*/
 typedef std::vector<GLfloat> GLvec;
 typedef std::vector<GLuint> GLidxvec;
 
@@ -82,6 +57,7 @@ GLuint sphere_buffs[2];
 GLuint cone_element_buffs[2];
 GLuint cylinder_element_buffs[3];
 GLuint* torus_element_buffers;
+
 std::vector<std::vector<GLuint>> torus_side_idx;
 int active_vao = 0;
 int draw_mode = 0;
